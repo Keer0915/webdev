@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>JavaScript Examples</title>
+    <script>
+      function onClickExample() {
+        alert("You clicked the button!");
+      }
+
+      function onMouseOverExample() {
+        document.getElementById("mouse-over-example").innerHTML =
+          "Mouse hovering!";
+      }
+
+      function onMouseOutExample() {
+        document.getElementById("mouse-over-example").innerHTML =
+          "Mouse not hovering!";
+      }
+
+      function onChangeExample() {
+        var inputText = document.getElementById("change-example").value;
+        document.getElementById("change-example-output").innerHTML =
+          "Input value: " + inputText;
+      }
+
+     
+    </script>
+  </head>
+  <body>
+    <label for="numberInput">Enter a number:</label>
+    <input type="number" id="numberInput">
+    <button onclick="reverseNumber()">Reverse Number</button>
+    <p id="reverseOutput"></p>
+
+    <label for="factorialInput">Enter a number:</label>
+    <input type="number" id="factorialInput">
+    <button onclick="findFactorial()">Find Factorial</button>
+    <p id="factorialOutput"></p>
+
+    <label for="textInput">Enter some text:</label>
+    <input type="text" id="textInput">
+    <button onclick="findLongestWord()">Find Longest Word</button>
+    <p id="longestWordOutput"></p>
+
+    <button onclick="onClickExample()">Click me</button>
+
+    <p id="mouse-over-example" onmouseover="onMouseOverExample()" onmouseout="onMouseOutExample()">Mouse over me</p>
+
+    <input type="text" id="change-example" onchange="onChangeExample()" />
+    <p id="change-example-output"></p>
+
+    <head> Javascript Events</head>    
+<h2> Enter something here</h2>  
+<input type="text" id="input1" onkeydown="keydownevent()"/>  
+<script>  
+<!--  
+    function keydownevent()  
+    {  
+        document.getElementById("input1");  
+        alert("Pressed a key");  
+    }  
+//-->
+</script>  
+
+    <script>
+      // Longest Word
+      const findLongestWord = () => {
+        const textInput = document.getElementById("textInput");
+        const longestWordOutput = document.getElementById("longestWordOutput");
+        const longestWord = (str) => {
+          const words = str.split(' ');
+          let longest = '';
+          for (let i = 0; i < words.length; i++) {
+            if (words[i].length > longest.length) {
+              longest = words[i];
+            }
+          }
+          return longest;
+        };
+        const result = longestWord(textInput.value);
+        longestWordOutput.innerText = `Longest word: ${result}`;
+      };
+
+      // Factorial
+      const findFactorial = () => {
+        const factorialInput = document.getElementById("factorialInput");
+        const factorialOutput = document.getElementById("factorialOutput");
+        const factorial = (num) => {
+          if (num === 0 || num === 1) {
+            return 1;
+          } else {
+            return num * factorial(num - 1);
+          }
+        };
+        const result = factorial(factorialInput.value);
+        factorialOutput.innerText = `Factorial: ${result}`;
+      };
+
+      
+
+       // Reverse Number
+       const reverseNumber = () => {
+        const numberInput = document.getElementById("numberInput");
+        const reverseOutput = document.getElementById("reverseOutput");
+        const reverse = (num) => {
+          return Number(num.toString().split('').reverse().join(''));
+        };
+        const result = reverse(numberInput.value);
+        reverseOutput.innerText = `Reversed number: ${result}`;
+      };
+    </script>
+  </body>
+</html>

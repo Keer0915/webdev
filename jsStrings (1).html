@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="two.js"></script>
+        <title>JS Strings</title>
+        
+    </head>
+    <body>
+        <input id="abc"></input>
+        <p id="abcd"></p>
+    </body>
+</html>
+<script>
+    const a1 = document.getElementById("abc");
+    const res=document.getElementById("abcd");
+    a1.addEventListener("input",() => {
+    const str2 = a1.value.split("").sort().join("");
+    res.innerText = str2;
+})
+</script>

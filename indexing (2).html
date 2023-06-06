@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>indexing</title>
+  </head>
+  <body>
+    <script>
+      // 1) Write a JavaScript program to list the properties of a JavaScript object.
+
+      var student = {
+        name: "David Rayy",
+
+        sclass: "VI",
+
+        rollno: 12,
+      };
+
+      var keys = Object.keys(student);
+
+      for (var i = 0; i < keys.length; i++) {
+        alert(student[keys[i]]);
+      }
+
+      //2) Write a JavaScript function to convert an object into a list of `[key, value]` pairs.
+      const myObj = { name: "Saurabh", age: 21, city: "Bangalore" };
+      const myList = Object.entries(myObj);
+
+      alert(JSON.stringify(myList));
+
+      //3) Write a program to store values into a set, and to retrieve value from the set, to iterate over the set
+
+      const one1 = new Set();
+      one1.add("one");
+      one1.add("two");
+      one1.add("three");
+
+      
+
+      for (const value of one1) {
+        alert(value);
+      }
+      //4.Write a program to store values into a map, and to retrieve value from the map using key, to iterate over the map
+
+      const map = new Map();
+      map.set("Mercedes", 10000);
+      map.set("Audi", 20000);
+      map.set("RollsRoyce", 300000);
+      const price = map.get("Audi");
+      alert(price);
+
+      for (let [key, value] of map) {
+        alert(`The price of ${key} is ${value}`);
+      }
+
+      /*5. Show how map is different from object to store key value pairs with coding examples and prove Maps perform better than objects in most of the scenarios involving addition and removal of keys. */
+
+      
+      let Obj = {};
+      for (let i = 0; i < 1000000; i++) {
+        Obj[i] = i;
+      }
+      console.time("objectAdd");
+      Obj[1000000] = 1000000;
+      console.timeEnd("objectAdd");
+
+      console.time("objectDelete");
+      delete Obj[500000];
+      console.timeEnd("objectDelete");
+
+      let Map1 = new Map();
+      for (let i = 0; i < 1000000; i++) {
+        Map1.set(i, i);
+      }
+      console.time("mapAdd");
+      Map1.set(1000000, 1000000);
+      console.timeEnd("mapAdd");
+
+      console.time("mapDelete");
+      Map1.delete(500000);
+      console.timeEnd("mapDelete");
+      /* 6. Show how a set is different from an array to store the value with a coding example and prove Sets perform better than Arrays in most of the scenarios involving searching values present in it.*/
+
+      const myArray = [];
+      const mySet = new Set();
+      for (let i = 0; i < 1000000; i++) {
+        myArray.push(i);
+        mySet.add(i);
+      }
+      console.time("Array Search");
+      const a = myArray.indexOf(999999);
+      console.timeEnd("Array Search");
+
+      console.time("Set Search");
+      const y = mySet.has(999999);
+      console.timeEnd("Set Search");
+    </script>
+  </body>
+</html>
